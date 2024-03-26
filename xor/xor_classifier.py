@@ -13,7 +13,13 @@ def xor_classifier_example():
     epochs = 1500
 
     # 입력층(2), 은닉층(4), 출력층(1)으로 구성
-    mlp_classifier = MLP(hidden_layer_conf=[4], num_output_nodes=1)
+    mlp_classifier = MLP(hidden_layer_conf=[4], num_output_nodes=1) # Multi layer perceptron
+
+    # mlp_classifier = MLP(hidden_layer_conf=None, num_output_nodes=1)
+    # Single layer perceptron
+    # 정확도가 0.75로 고정됨
+    # hidden layer를 하나 추가해야 해결됨
+
     mlp_classifier.build_model()
     # 모델 훈련
     mlp_classifier.fit(x=input_data, y=xor_labels, batch_size=batch_size, epochs=epochs)

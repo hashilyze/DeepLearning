@@ -17,7 +17,7 @@ class MLP:
                                                       use_bias=True)(hidden_layers)
 
         output = tf.keras.layers.Dense(units=self.num_output_nodes,
-                                       activation=tf.keras.activations.sigmoid,
+                                       activation=tf.keras.activations.sigmoid, # 출력층은 반드시 sigmoid 사용 (이진)
                                        use_bias=True)(hidden_layers)
 
         self.logic_op_model = tf.keras.Model(inputs=input_layer, outputs=output)
