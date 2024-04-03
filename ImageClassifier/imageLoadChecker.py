@@ -1,10 +1,8 @@
 import tensorflow as tf
 import matplotlib.pyplot as plt
-from ImageClassifier import ImageClassifier
-import numpy as np
 
 
-def run_classifier():
+def run_loadChecker():
     # fashion mnist Dataset을 가져옴
     fashion_mnist = tf.keras.datasets.fashion_mnist
     (train_images, train_labels), (test_images, test_labels) = fashion_mnist.load_data()
@@ -21,25 +19,28 @@ def run_classifier():
     print("Test data labels")
     print(test_labels)
 
-    ##### classifier train and predict – begin
+    # 로드된 이미지 확인 (1)
+    plt.figure()
+    plt.imshow(train_images[0])
+    plt.colorbar()
+    plt.grid(False)
+    plt.show()
+    # 특성 정규화 (256컬러를 0~1사이의 값으로 매핑)
+    train_images = train_images / 255.0
+    test_images = test_images / 255.0
 
-
-
-    '''
-    ## print predicted result
-    predicted_labels = None    
-    plt.figure(figsize=(10, 10))
+    # 로드된 이미지 확인 (2)
+    plt.figure(figsize=(10,10))
     for i in range(25):
-        plt.subplot(5, 5, i + 1)
+        plt.subplot(5, 5, i+1)
         plt.xticks([])
         plt.yticks([])
         plt.grid(False)
-        plt.imshow(test_images[i], cmap=plt.cm.binary)
-        plt.xlabel(class_names[predicted_labels[i]])
+        plt.imshow(train_images[i], cmap=plt.cm.binary)
+        plt.xlabel(class_names[train_labels[i]])
     plt.show()
-    '''
-    ##### classifier train and predict – end
+
 
 if __name__ == "__main__":
     # execute only if run as a script
-    run_classifier()
+    run_loadChecker()
