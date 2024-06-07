@@ -31,3 +31,7 @@ class MLP:
     def predict(self, x, batch_size):
         prediction = self.logic_op_model.predict(x=x, batch_size=batch_size)
         return prediction
+
+    def evaluate(self, x, y, batch_size):
+        evaluation = self.logic_op_model.evaluate(x=x, y=y, batch_size=batch_size)
+        return evaluation
